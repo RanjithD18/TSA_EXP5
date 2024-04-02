@@ -13,7 +13,30 @@ To Illustrates how to perform time series analysis and decomposition on the mont
 5. Display the overall results.
 
 ### PROGRAM:
+~~~
+!pip install pandas
 
+import pandas as pd
+import matplotlib.pyplot as plt
+from statsmodels.tsa.seasonal import seasonal_decompose
+
+# Load dataset (replace with your data)
+data = pd.read_csv('/content/Temperature.csv')
+
+# Convert 'date' column to datetime format and set as index
+data['Month'] = pd.to_datetime(data['Month'])
+data.set_index('Month', inplace=True)
+
+# Specify the period for decomposition
+period = 12  # Change this to the appropriate period for your data
+
+# Perform decomposition
+result = seasonal_decompose(data, model='multiplicative', period=period)
+
+# Plot the decomposition
+result.plot()
+plt.show()
+~~~
 
 
 
@@ -31,19 +54,7 @@ To Illustrates how to perform time series analysis and decomposition on the mont
 
 
 ### OUTPUT:
-FIRST FIVE ROWS:
-
-
-
-PLOTTING THE DATA:
-
-SEASONAL PLOT REPRESENTATION :
-
-
-
-TREND PLOT REPRESENTATION :
-
-OVERAL REPRESENTATION:
+![](https://private-user-images.githubusercontent.com/94165064/316245372-cbf97321-ad8e-4238-8ead-31fea131cde3.png?jwt=eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJnaXRodWIuY29tIiwiYXVkIjoicmF3LmdpdGh1YnVzZXJjb250ZW50LmNvbSIsImtleSI6ImtleTUiLCJleHAiOjE3MTIwNDQ0NzEsIm5iZiI6MTcxMjA0NDE3MSwicGF0aCI6Ii85NDE2NTA2NC8zMTYyNDUzNzItY2JmOTczMjEtYWQ4ZS00MjM4LThlYWQtMzFmZWExMzFjZGUzLnBuZz9YLUFtei1BbGdvcml0aG09QVdTNC1ITUFDLVNIQTI1NiZYLUFtei1DcmVkZW50aWFsPUFLSUFWQ09EWUxTQTUzUFFLNFpBJTJGMjAyNDA0MDIlMkZ1cy1lYXN0LTElMkZzMyUyRmF3czRfcmVxdWVzdCZYLUFtei1EYXRlPTIwMjQwNDAyVDA3NDkzMVomWC1BbXotRXhwaXJlcz0zMDAmWC1BbXotU2lnbmF0dXJlPWYyZjdiNGE5NTBjZGY2OGNkYWJiMTQ0YjRkN2NmOGI5Nzk2MTdkMGQ2NWJlZGMxYzFjN2ExZWQ0OGI5MmVkZGUmWC1BbXotU2lnbmVkSGVhZGVycz1ob3N0JmFjdG9yX2lkPTAma2V5X2lkPTAmcmVwb19pZD0wIn0.pr3Foq-sijqMI52S5Vcrp4n8qBwLISTBeO4McndTsvM)
 
 
 
